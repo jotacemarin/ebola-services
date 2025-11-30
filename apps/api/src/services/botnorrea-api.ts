@@ -26,7 +26,10 @@ export class BotnoreaAPI {
         service: BOTNORREA_SERVICE,
         text,
         chat_id: chatId,
-        reply_parameters: { chat_id: chatId, message_id: replyToMessageId },
+        reply_parameters: {
+          chat_id: chatId,
+          message_id: replyToMessageId,
+        },
       }),
     });
   }
