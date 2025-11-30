@@ -1,3 +1,5 @@
+import { BOTNORREA_SERVICE } from "../../constants";
+
 type BotnoreaConfig = {
   apiUrl: string;
   username: string;
@@ -14,16 +16,17 @@ export class BotnoreaAPI {
   }
 
   async sendTelegramMessage(text: string, chatId: number, replyToMessageId?: number): Promise<Response> {
-    return fetch(`${this.config.apiUrl}/telegram/send-message`, {
+    return fetch(`${this.config.apiUrl}/${BOTNORREA_SERVICE}/send-message`, {
       method: 'POST',
       headers: {
         Authorization: this.authHeader,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        service: BOTNORREA_SERVICE,
         text,
         chat_id: chatId,
-        reply_to_message_id: replyToMessageId,
+        reply_parameters: { chat_id: chatId, message_id: replyToMessageId },
       }),
     });
   }

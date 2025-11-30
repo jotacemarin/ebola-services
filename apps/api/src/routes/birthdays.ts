@@ -42,7 +42,7 @@ app.on(
       return c.json({ error: 'Unauthorized to do this action in this chat' }, 403);
     }
 
-    const replyToMessageId = body?.message?.message_id;
+    const replyToMessageId = body?.message_id;
 
     const db = c.get('db');
     const users = await getNextNBirthdays(db, n);
